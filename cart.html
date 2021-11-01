@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input">
+    <button type="submit" onclick="my()">search</button>
+    <script>
+        my=()=>{
+            let input = document.getElementById("input").value;
+            console.log(input)
+            fetch(`https://domain-availability.whoisxmlapi.com/api/v1?apiKey=at_DxBVr1U6nBAXEQ9LmFZHtZj0qUisV&domainName=${input}&credits=DA`, {
+            method: 'GET'
+            })
+            .then(res=>res.json())
+            .then((data)=>{
+                console.log(data.DomainInfo.domainAvailability)
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        }
+    </script>
+</body>
+</html>
